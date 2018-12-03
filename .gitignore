@@ -13,3 +13,6 @@ pom.xml.asc
 *.iml
 .nrepl-port
 .DS_Store
+.rebel_readline_history
+figwheel_server.log
+resources/js/compiled
