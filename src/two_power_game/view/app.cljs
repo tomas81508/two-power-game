@@ -124,18 +124,22 @@
                     :min-width        "100px"
                     :background-color "gray"
                     :margin-right     "20px"
+                    :margin-top       "5px"
+                    :margin-bottom    "5px"
                     :padding          "0.5rem"
                     :border-radius    "5%"
                     :text-align       "center"
                     :color            "white"
                     :text-transform   "uppercase"
-                    :cursor "pointer"}
+                    :cursor           "pointer"}
          :on-click on-click-fn}
    label])
 
 (rum/defc app-component
   [state trigger-event]
-  [:div {:style {}}
+  [:div {:style {:width        "400px"
+                 :margin-left  "auto"
+                 :margin-right "auto"}}
    (header-component)
    ;(simple-game-component state trigger-event)
    (transition-game-component state trigger-event)
