@@ -11,23 +11,6 @@
 (defonce initial-state (core/create-state ["000" "020" "000"]
                                           {:board-size 3}))
 
-(defn handle-event
-  [{name :name data :data}]
-  ; (println "An event occurred: " name data)
-  (condp = name
-    :restart (reset! state-atom [initial-state])
-    :move-left (swap! state-atom (fn [states]
-                                   (conj states (core/move (last states) :left))))
-    :move-up (swap! state-atom (fn [states]
-                                 (conj states (core/move (last states) :up))))
-    :move-right (swap! state-atom (fn [states]
-                                    (conj states (core/move (last states) :right))))
-    :move-down (swap! state-atom (fn [states]
-                                   (conj states (core/move (last states) :down))))
-    :undo (swap! state-atom (fn [states]
-                              (into [] (drop-last states))))
-    :redo (do)
-    nil))
 
 (defn render! [state]
   (rum/mount (app-component state handle-event)
